@@ -11,8 +11,6 @@
           
         </ul> <!--end::Start Navbar Links--> <!--begin::End Navbar Links-->
         <ul class="navbar-nav ms-auto"> <!--begin::Navbar Search-->
-          <li class="nav-item"> <a class="nav-link" data-widget="navbar-search" href="#" role="button"> <i
-                class="bi bi-search"></i> </a> </li> <!--end::Navbar Search--> <!--begin::Messages Dropdown Menu-->
           <!--begin::User Menu Dropdown-->
           <li class="nav-item dropdown user-menu"> <a href="#" class="nav-link dropdown-toggle"
               data-bs-toggle="dropdown"> <img src="../../dist/assets/img/user2-160x160.jpg"
@@ -36,7 +34,13 @@
               <li class="user-footer"> <a href="#" class="btn btn-default btn-flat">Profile</a> <a href="#"
                   class="btn btn-default btn-flat float-end">Sign out</a> </li> <!--end::Menu Footer-->
             </ul>
-          </li> <!--end::User Menu Dropdown-->
+          </li>
+          
+          <li class="nav-item"> <a class="nav-link" data-widget="navbar-search" href="{{url('logout')}}" role="button"> <i
+            class="bi bi-box-arrow-right"></i> </a> </li> <!--end::Navbar Search--> <!--begin::Messages Dropdown Menu-->
+      
+
+          <!--end::User Menu Dropdown-->
         </ul> <!--end::End Navbar Links-->
       </div> <!--end::Container-->
     </nav> <!--end::Header--> <!--begin::Sidebar-->

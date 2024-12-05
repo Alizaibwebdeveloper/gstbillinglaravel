@@ -63,5 +63,12 @@ class AuthController extends Controller
             return redirect()->back()->with('error', 'Plzz Write Correct Credentails');
         }
     }
+
+
+    public function logout(){
+
+        Auth::logout();
+        return redirect('/');
+    }
     
 }
