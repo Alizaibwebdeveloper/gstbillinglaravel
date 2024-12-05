@@ -6,9 +6,10 @@
         <div class="card-header">
             <div class="card-title">Add Parties Type</div>
         </div> <!--end::Header--> <!--begin::Form-->
-        <form> <!--begin::Body-->
+        <form action="{{url('admin/parties_type/add')}}" method="POST">
+            @csrf 
             <div class="card-body">
-                <div class="mb-3"> <label for="exampleInputEmail1" class="form-label">Parties Type Name</label> <input type="text" class="form-control"  placeholder="Parties Type Name">
+                <div class="mb-3"> <label for="exampleInputEmail1" class="form-label">Parties Type Name <span style="color:red;">*</span></label> <input type="text" name="parties_type_name" class="form-control"  placeholder="Parties Type Name">
                     
                 </div>
                 
