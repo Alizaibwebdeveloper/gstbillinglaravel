@@ -58,13 +58,43 @@ class PartiesTypeController extends Controller
 
     }
 
-    public function parties(){
-         return  view('admin.parties.list');
-    } 
+    public function parties()
+{
+    $data['getRecord'] = partiesModel::getRecordAll(); // Fetch paginated records using static method
+    return view('admin.parties.list', $data); // Pass data to the view
+}
+ 
 
     public function parties_add(){
         $data['getPartiesType'] = partiestypeModel::get();
         return view('admin.parties.add',$data);
+    }
+
+    public function parties_insert(Request $request){
+
+        $data = new partiesModel();
+        $data->parties_type_id = $request->parties_type_id;
+        $data->full_name = $request->full_name;
+        $data->phone_no = $request->phone_no;
+        $data->address = $request->address;
+        $data->account_holder_name = $request->account_holder_name;
+        $data->account_no = $request->account_no;
+        $data->bank_name = $request->bank_name;
+        $data->ifsc_code = $request->ifsc_code;
+        $data->branch_address = $request->branch_address;
+        $data->save();
+
+        return redirect('/admin/parties')->with('success', 'Record Created Successfully!');
+
+
+    }
+
+    public function parties_edit(){
+
+    }
+
+    public function parties_delete(){
+
     }
 
 }
