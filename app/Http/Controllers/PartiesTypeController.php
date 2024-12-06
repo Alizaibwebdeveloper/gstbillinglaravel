@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\partiestypeModel;
+use App\Models\partiesModel;
 
 class PartiesTypeController extends Controller
 {
@@ -56,4 +57,14 @@ class PartiesTypeController extends Controller
         return redirect('admin/parties_type')->with('error', 'Record deleted Successfully!');
 
     }
+
+    public function parties(){
+         return  view('admin.parties.list');
+    } 
+
+    public function parties_add(){
+        $data['getPartiesType'] = partiestypeModel::get();
+        return view('admin.parties.add',$data);
+    }
+
 }

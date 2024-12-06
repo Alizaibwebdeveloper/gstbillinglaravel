@@ -23,6 +23,15 @@
                 <p>Parties Types</p>
             </a> 
         </li>
+
+
+        <li class="nav-item"> 
+          <a href="{{ url('admin/parties') }}" class="nav-link @if (Request::segment(2) == 'parties_type') active @endif"> 
+              <i class="nav-icon bi bi-person"></i>
+              <p>Parties</p>
+          </a> 
+      </li>
+
         
         </ul> <!--end::Sidebar Menu-->
       </nav>
