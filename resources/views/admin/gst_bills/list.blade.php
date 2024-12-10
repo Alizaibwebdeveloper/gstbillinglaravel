@@ -23,11 +23,59 @@
                                     <tr>
                                         <th style="width: 10px">#</th>
                                         <th>Parties Type Name</th>
-                                        <th style="width: 40px">Action</th>
+                                        <th>Invoice_date</th>
+                                        <th>Invoice_number</th>
+                                        <th>Total Amount</th>
+                                        <th>Tex Amount</th>
+                                        <th>Net Amount</th>
+                                        <th>Action</th>
+                                        {{-- <th>Item_description</th>
+                                        <th>Parties Type Name</th>
+                                        <th>Parties Type Name</th>
+                                        <th>Parties Type Name</th>
+                                        <th>Parties Type Name</th> 
+                                        <th>Parties Type Name</th> 
+                                        <th>Parties Type Name</th> 
+                                        <th style="width: 40px">Action</th> --}}
                                     </tr>
                                 </thead>
+                                @php
+                                    $totalAmount = 0;
+                                @endphp
                                 <tbody>
                                    
+                                    @foreach ($getRecord as $value)
+                                   
+                                    @php
+                                        $totalAmount = $totalAmount + $value->total_amount;
+                                    @endphp
+                                    <tr>
+                                        <td>{{$value->id}}</td>
+                                        <td>{{$value->parties_type_name}}</td>
+                                        <td>{{date('d-m-Y', strtotime($value->invoice_date))}}</td>
+                                        <td>{{$value->invoice_number}}</td>
+                                        <td>Rs. {{$value->total_amount}}</td>
+                                        <td>{{$value->tax_amount}}</td>
+                                        <td>{{$value->net_amount}}</td>
+                                        {{-- <td>{{$value->item_description}}</td>
+                                        <td>{{$value->cgst_rate}}</td>
+                                        <td>{{$value->sgst_rate}}</td>
+                                        <td>{{$value->igst_rate}}</td>
+                                        <td>{{$value->cgst_amount}}</td>
+                                        <td>{{$value->sgst_amount}}</td>
+                                        <td>{{$value->igst_amount}}</td>
+                                        <td>{{$value->declaration}}</td>
+                                        <td>{{$value->created_at}}</td>
+                                        <td>{{$value->updated_at}}</td> --}}
+
+
+                                    </tr>
+                                    @endforeach
+
+                                    @if (!empty($totalAmount))
+                                        <th colspan="4">Total (Rs)</th>
+                                        <td>Rs. {{number_format($totalAmount,2)}}</td>
+                                    @endif
                                 </tbody>
                             </table>
                         </div> <!-- /.card-body -->

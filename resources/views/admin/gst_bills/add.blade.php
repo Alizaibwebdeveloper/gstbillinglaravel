@@ -10,7 +10,7 @@
             @csrf 
             <div class="card-body ">
                 
-                <select name="" class="form-control">
+                <select name="parties_type_id" class="form-control">
                     @foreach ($getPartiesType as $value)
                         
                     <option value="{{$value->id}}">{{$value->parties_type_name}}</option>
