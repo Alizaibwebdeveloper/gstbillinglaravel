@@ -9,6 +9,7 @@ Route::get('/', [AuthController::class, 'login']);
 Route::post('login_post',[AuthController::class,'login_post']);
 Route::get('/register', [AuthController::class, 'register']);
 Route::get('/forgot-password', [AuthController::class, 'forgotpassword']);
+Route::get('logout', [AuthController::class, 'logout']);
 
 
 Route::group(['middleware' => 'admin'], function () {
@@ -27,13 +28,9 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('admin/parties/add', [PartiesTypeController::class, 'parties_insert']);
 
     Route::get('admin/parties/edit/{id}', [PartiesTypeController::class, 'parties_edit']);
-
-    Route::get('admin/parties/delete/{id}', [PartiesTypeController::class, 'parties_delete']);
-
-
-
+    Route::post('admin/parties/edit/{id}', [PartiesTypeController::class, 'parties_update']);
     
+    Route::get('admin/parties/delete/{id}', [PartiesTypeController::class, 'parties_delete']);   
 });
 
-Route::get('logout', [AuthController::class, 'logout']);
 

@@ -89,11 +89,39 @@ class PartiesTypeController extends Controller
 
     }
 
-    public function parties_edit(){
+    public function parties_edit(Request $request, $id){
+
+        $data['getRecord'] = partiesModel::SinglegetRecord($id);
+        $data['getPartiesType'] = partiestypeModel::get();
+        return view('admin.parties.edit', $data);
 
     }
 
-    public function parties_delete(){
+    public function parties_update(Request $request, $id){
+
+        $data = partiesModel::find($id);
+        $data->parties_type_id = $request->parties_type_id;
+        $data->full_name = $request->full_name;
+        $data->phone_no = $request->phone_no;
+        $data->address = $request->address;
+        $data->account_holder_name = $request->account_holder_name;
+        $data->account_no = $request->account_no;
+        $data->bank_name = $request->bank_name;
+        $data->ifsc_code = $request->ifsc_code;
+        $data->branch_address = $request->branch_address;
+        $data->save();
+
+        return redirect('/admin/parties')->with('success', 'Record Updated Successfully!');
+
+
+    }
+
+    public function parties_delete($id){
+        $data = partiesModel::find($id);
+        $data->delete();
+
+        return redirect('/admin/parties')->with('error', 'Record deleted  Successfully!');
+
 
     }
 

@@ -17,5 +17,10 @@ class partiesModel extends Model
         $return = $return->paginate(5);    // Paginate the results (20 items per page)
         return $return;                     // Return the paginated instance
     }
+
+    static public function  SinglegetRecord($id){
+
+       return  self::find($id);
+    }
     
 }

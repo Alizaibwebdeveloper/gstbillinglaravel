@@ -19,7 +19,7 @@
 
                             @foreach ($getPartiesType as $value)
 
-                            <option value="{{$value->id}}">{{$value->parties_type_name}}</option>
+                            <option  value="{{$value->id}}">{{$value->parties_type_name}}</option>
                                 
                             @endforeach
                         </select>
