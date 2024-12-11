@@ -9,16 +9,17 @@
         <form action="{{url('admin/gst_bills/add')}}" method="POST">
             @csrf 
             <div class="card-body ">
-                
-                <select name="parties_type_id" class="form-control">
+                <select name="parties_type_id" id="">
+
+                    <option value="">Select Parties Type Name</option>
+
                     @foreach ($getPartiesType as $value)
+
+                    <option  value="{{$value->id}}">{{$value->parties_type_name}}</option>
                         
-                    <option value="{{$value->id}}">{{$value->parties_type_name}}</option>
-
                     @endforeach
-
                 </select>
-                </div>
+                               </div>
 
 
                 <div class="card-body">

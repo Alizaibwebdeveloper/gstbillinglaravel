@@ -15,8 +15,10 @@
                     <div class="card mb-4">
                         <div class="card-header">
                             <h3 class="card-title">GST Bills List</h3>
-                            <a href="{{url('admin/gst_bills/add')}}" class="btn btn-primary float-end">Add New parties Type</a>
-                        </div> <!-- /.card-header -->
+                            <a href="{{ url('admin/gst_bills/add') }}" class="btn btn-primary float-end">
+                                Add New Parties Type
+                            </a>
+                                                    </div> <!-- /.card-header -->
                         <div class="card-body">
                             <table class="table table-bordered">
                                 <thead>
@@ -57,6 +59,15 @@
                                         <td>Rs. {{$value->total_amount}}</td>
                                         <td>{{$value->tax_amount}}</td>
                                         <td>{{$value->net_amount}}</td>
+                                        <td>
+                                            <a href="{{url('admin/gst_bills/edit/'.$value->id)}}" class="btn btn-info">
+                                                <i class="bi bi-pen"></i>
+                                            </a>
+                                            
+                                            <a href="{{url('admin/gst_bills/delete/'.$value->id)}}" class="btn btn-danger">
+                                                <i class="bi bi-trash"></i>
+                                            </a>
+                                        </td>
                                         {{-- <td>{{$value->item_description}}</td>
                                         <td>{{$value->cgst_rate}}</td>
                                         <td>{{$value->sgst_rate}}</td>
@@ -81,9 +92,8 @@
                         </div> <!-- /.card-body -->
                         <div class="card-footer clearfix">
                             <ul class="pagination pagination-sm m-0 float-end">
-                                
+                                {!! $getRecord->appends(Illuminate\Support\Facades\Request::except('page'))->links() !!}
 
-                            
                             </ul>
                         </div>
                     </div> <!-- /.card -->
