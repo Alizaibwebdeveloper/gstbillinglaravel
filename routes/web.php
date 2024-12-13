@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PartiesTypeController;
 use App\Http\Controllers\GSTBillsController;
+use App\Http\Controllers\MyAccountController;
 
 Route::get('/', [AuthController::class, 'login']);
 Route::post('login_post',[AuthController::class,'login_post']);
@@ -41,6 +42,10 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('admin/gst_bills/edit/{id}', [GSTBillsController::class, 'gst_bills_update']);
 
     Route::get('admin/gst_bills/delete/{id}', [GSTBillsController::class, 'gst_bills_delete']);
+
+    Route::get('admin/my_account',[MyAccountController::class, 'my_account']);
+    Route::post('admin/my_account/update',[MyAccountController::class, 'my_account_update']);
+
 
 });
 

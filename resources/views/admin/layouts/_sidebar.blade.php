@@ -42,6 +42,15 @@
     </li>
 
 
+    
+    <li class="nav-item"> 
+      <a href="{{ url('admin/my_account') }}" class="nav-link @if (Request::segment(2) == 'my_account') active @endif"> 
+          <i class="nav-icon bi bi-person"></i>
+          <p>My Account</p>
+      </a> 
+  </li>
+
+
         
         </ul> <!--end::Sidebar Menu-->
       </nav>
