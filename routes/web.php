@@ -46,6 +46,8 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/my_account',[MyAccountController::class, 'my_account']);
     Route::post('admin/my_account/update',[MyAccountController::class, 'my_account_update']);
 
+    Route::get('admin/parties_type/pdf_generator', [PartiesTypeController::class,'parties_type_pdf_generator']);
+
 
 });
 

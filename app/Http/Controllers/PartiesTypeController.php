@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\partiestypeModel;
 use App\Models\partiesModel;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class PartiesTypeController extends Controller
 {
@@ -121,6 +122,22 @@ class PartiesTypeController extends Controller
         $data->delete();
 
         return redirect('/admin/parties')->with('error', 'Record deleted  Successfully!');
+
+
+    }
+
+    public function parties_type_pdf_generator(){
+
+        $getRecordAll = partiestypeModel::get();
+        $data = [
+
+            'title' => 'Welcome to My Gst Billing Project ( Developed By Ali zaib)',
+            'date'=> date('m/d/Y'),
+            'parties'=> $getRecordAll,
+        ];
+
+        $pdf =Pdf::loadView('PartiesTypePDF', $data);
+        return $pdf->download('gstbillingproject(Ali zaib).pdf');
 
 
     }

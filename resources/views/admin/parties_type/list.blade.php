@@ -46,6 +46,8 @@
                         <div class="card-header">
                             <h3 class="card-title">Parties Type List</h3>
                             <a href="{{url('admin/parties_type/add')}}" class="btn btn-primary float-end">Add New parties Type</a>
+
+                            <a href="{{url('admin/parties_type/pdf_generator')}}" class="btn btn-success float-end me-2">Pdf Generator</a>
                         </div> <!-- /.card-header -->
                         <div class="card-body">
                             <table class="table table-bordered">
