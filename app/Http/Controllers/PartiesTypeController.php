@@ -9,9 +9,9 @@ use App\Models\partiesModel;
 
 class PartiesTypeController extends Controller
 {
-    public function parties_type(){
+    public function parties_type(Request $request){
 
-        $data['getRecord'] =  partiestypeModel::getRecordAll();
+        $data['getRecord'] = PartiestypeModel::getRecordAll($request);
         return view('admin.parties_type.list', $data);
     }
 
