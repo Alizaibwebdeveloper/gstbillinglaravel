@@ -16,6 +16,8 @@
                         <div class="card-header">
                             <h3 class="card-title">Parties List</h3>
                             <a href="{{url('admin/parties/add')}}" class="btn btn-primary float-end">Add New parties</a>
+
+                            <a href="{{url('admin/parties/pdfgenerate')}}" class="btn btn-success float-end me-2">Generate Pdf</a>
                         </div> <!-- /.card-header -->
                         <div class="card">
                             <div class="card-body">
@@ -50,6 +52,9 @@
                                                 <td>{{$value->ifsc_code}}</td>
                                                 <td>{{$value->branch_address}}</td>
                                                 <td>
+
+
+                                                    
                                                     <a href="{{url('admin/parties/edit/'.$value->id)}}" class="btn btn-info">
                                                         <i class="bi bi-pen"></i>
                                                     </a>

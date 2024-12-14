@@ -167,4 +167,25 @@ class PartiesTypeController extends Controller
         // Return the generated PDF for download
         return $pdf->download('gstBillingproject.pdf');
     }
+
+    public function pdfgenerate(){
+        // $getRecordAll = partiesModel::get();
+
+        $getRecordAll = partiesModel::select(
+            'parties.*',  // Use .* to select all columns from parties table
+            'parties_type.*'  // Use .* to select all columns from parties_type table
+        )
+        ->join('parties_type', 'parties_type.id', '=', 'parties.parties_type_id')
+        ->get();
+        $data = [
+
+            'title' => 'Welcome to My Gst Billing Project ( Developed By Ali zaib)',
+            'date'=> date('m/d/Y'),
+            'parties'=> $getRecordAll,
+        ];
+
+        $pdf =Pdf::loadView('PartiesPDF', $data);
+        return $pdf->download('gstbillingproject(Ali zaib).pdf');
+ 
+    }
 }

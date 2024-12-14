@@ -50,6 +50,8 @@ Route::group(['middleware' => 'admin'], function () {
 
     Route::get('admin/parties_type/pdf_single/{id}',[PartiesTypeController::class, 'partiestype_pdf_single']);
 
+    Route::get('admin/parties/pdfgenerate',[PartiesTypeController::class, 'pdfgenerate']);
+
 
 });
 
