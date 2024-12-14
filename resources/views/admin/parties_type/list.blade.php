@@ -65,6 +65,9 @@
                                         <td>{{$value->id}}</td>
                                         <td style="width: 40%;">{{$value->parties_type_name}}</td>
                                         <td style="width: 40%;">
+
+                                            <a href="{{ url('admin/parties_type/pdf_single/'.$value->id) }}" class="btn btn-success"><i class="bi bi-file-pdf-fill"></i></a>
+
                                             <a href="{{ url('admin/parties_type/edit/' . $value->id) }}" class="btn btn-info"><i class="bi bi-pen"></i></a>
 
                                             <a href="{{url('admin/parties_type/delete/'.$value->id)}}" class="btn btn-danger"><i class="bi bi-trash"></i></a>

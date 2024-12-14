@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\partiestypeModel;
 use App\Models\partiesModel;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Response;
 
 class PartiesTypeController extends Controller
 {
@@ -139,7 +140,31 @@ class PartiesTypeController extends Controller
         $pdf =Pdf::loadView('PartiesTypePDF', $data);
         return $pdf->download('gstbillingproject(Ali zaib).pdf');
 
-
     }
 
+    public function partiestype_pdf_single($id)
+    {
+        // Fetch the record from the database
+        $getSingleRecord = partiestypeModel::find($id);
+    
+        // Check if the record exists
+        if (is_null($getSingleRecord)) {
+            // Handle the case when the record is not found
+            return response()->json(['error' => 'Party type not found.'], 404);
+        }
+    
+        // Prepare the data for the PDF
+        $data = [
+            'title' => 'Welcome to My Gst Billing Project (Developed By Ali Zaib)',
+            'date' => date('m/d/Y'),
+            // Wrap the single record in an array to make it iterable
+            'parties' => [$getSingleRecord],
+        ];
+    
+        // Generate the PDF
+        $pdf = Pdf::loadView('partiesTypeSinglePdf', $data);
+    
+        // Return the generated PDF for download
+        return $pdf->download('gstBillingproject.pdf');
+    }
 }
